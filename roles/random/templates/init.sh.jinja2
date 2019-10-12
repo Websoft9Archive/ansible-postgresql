@@ -1,0 +1,26 @@
+#!/bin/bash
+
+old_password=$(cat /credentials/password.txt | awk 'NR==2' |awk -F ":" '{print $2}')
+
+new_password=$(pwgen -Acns 8 1)
+
+{% if ansible_distribution == 'CentOS' %}
+systemctl restart postgresql-{{postgresqlver}}.service
+{% endif %}
+
+{% if ansible_distribution == 'Ubuntu' %}
+systemctl restart postgresql@{{postgresqlver}}-main.service
+{% endif %}
+
+
+echo "               
+ALTER USER postgres WITH PASSWORD '$new_password';
+" | sudo -u postgres psql
+
+
+sed -i "s/$old_password/$new_password/" /credentials/password.txt
+
+sed -i 's/\/root\/init.sh//g' /etc/rc.local
+
+rm -rf /root/init.sh
+

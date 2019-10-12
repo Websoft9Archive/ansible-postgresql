@@ -1,0 +1,13 @@
+- name: PostgreSQL Version
+  debug:
+    var: postgresql_ver.stdout
+
+
+- name: Check PostgreSQL Server for CentOS
+  debug:
+    var: ansible_facts.services['postgresql-{{postgresqlver}}.service']
+
+
+- name: Check PostgreSQL Server for Ubuntu
+  debug:
+    var: ansible_facts.services['postgresql@{{postgresqlver}}-main.service']
