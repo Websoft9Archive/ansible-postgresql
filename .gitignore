@@ -1,4 +1,4 @@
 *.retry
 /.vscode
 hosts
-.gitignores
+.gitignore
