@@ -1,4 +1,4 @@
 *.retry
 /.vscode
 hosts
-.gitignore
+node_modules
