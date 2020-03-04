@@ -1,24 +1,66 @@
-# 服务器前置任务(ubuntu使用)
-- name: postgresql
-  hosts: all
-  become: yes
-  become_method: sudo
-  gather_facts: False
-  pre_tasks:
-   - name: Install Python
-     raw: sudo apt update && sudo apt-get -y install python
-  ignore_errors: yes
-
-
 # 核心任务
-
-- name: postgresql
+- name: MySQL
   hosts: all
   become: yes
   become_method: sudo
+  gather_facts: True
+
+  vars_files:
+    - vars/main.yml
+
+  vars_prompt:
+    - name: 'postgresql_selection'
+      prompt: "\nPlease choose the number for PostgreSQL version [ 1/2/3/4] \n\n
+      1: PostgreSQL 9.4\n
+      2: PostgreSQL 9.5\n
+      3: PostgreSQL 9.6\n
+      4: PostgreSQL 10\n
+      5. PostgreSQL 11"
+      private: no
+      default: 3
+
+    - name: 'remote_selection'
+      prompt: "\nDo you want to enable PostgreSQL remote connection? [ 1/2 ] \n\n
+      1: Enable remote connection(default)\n
+      2: Disable remote connection\n"
+      private: no
+      default: 1
+
+    - name: 'phppgadmin_selection'
+      prompt: "\nDo you want to install phppgadmin of Docker? [ 1/2 ] \n\n
+      1: Yes\n
+      2: No\n"
+      private: no
+      default: 1
+
+  vars:
+    postgresql_select:
+      '1': '9.4'
+      '2': '9.5'
+      '3': '9.6'
+      '4': '10'
+      '5': '11'
+    postgresql_version: "{{postgresql_select[postgresql_selection]}}" 
+
+    postgresql_select:
+      '1': True
+      'y': True
+      '2': ''
+      'n': ''
+
+    remote_select:
+      '1': True
+      '2': False
+      
+    
+    phpmyadmin_install_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
+    postgresql_remote: "{{remote_select[remote_selection]}} or {{phppgadmin_select[phppgadmin_selection]}}" 
+  
   roles:
-    - { role: common , tags: "common"}  
-    - {role: postgresql, tags: "postgresql"}
-    - {role: random, tags: "random"}
-    - {role: docker, tags: "docker"}
-    - {role: docker_phppgadmin, tags: "docker_phppgadmin"}
+   - {role: role_common, tags: "role_common"}   
+   - {role: role_cloud, tags: "role_cloud"}
+   - {role: role_mysql, tags: "role_mysql"}
+   - {role: role_docker, tags: "role_docker", when: phpmyadmin_install_docker}
+   - {role: role_docker_phpmyadmin, tags: "role_docker_phpmyadmin", when: phpmyadmin_install_docker}
+   - {role: role_init_password, tags: "role_init_password"}
+   - {role: role_end, tags: "role_end"} 
