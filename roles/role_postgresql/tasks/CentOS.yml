@@ -1,0 +1,73 @@
+- name: Install the repository RPM
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+
+- shell: echo "{{postgresqlver}}" | awk '{ if ($1<10)  printf("%.0f\n", 10*$1); else printf( $0 )}'
+  register: psqlver
+
+- name: Install PostgreSQL
+  yum: 
+    name: ["postgresql{{psqlver.stdout}}","postgresql{{psqlver.stdout}}-server"]
+    state: latest
+
+- name: Create Databases Directory
+  file:
+    path: /data/pgsql
+    state: directory
+    owner: postgres
+    group: postgres
+
+- name: Change postgresql databases directory
+  lineinfile:
+      dest: /lib/systemd/system/postgresql-{{ postgresqlver }}.service
+      regexp: 'Environment=PGDATA=/var/lib/pgsql/{{ postgresqlver }}/data/'
+      line: "Environment=PGDATA=/data/pgsql"
+      state: present
+
+- name: initialize databases
+  command: /usr/pgsql-{{ postgresqlver }}/bin/postgresql{{psqlver.stdout}}-setup initdb 
+  when: postgresqlver < 10
+
+- name: initialize databases
+  command: /usr/pgsql-{{ postgresqlver }}/bin/postgresql-{{psqlver.stdout}}-setup initdb    
+  when: postgresqlver >= 10
+
+- name: Change postgresql databases METHOD
+  lineinfile:
+      dest: /data/pgsql/pg_hba.conf
+      regexp: 'host    all             all             127.0.0.1/32            ident'
+      line: "host    all             all             127.0.0.1/32            md5"
+      state: present
+
+- name: Start PostgreSQL Service
+  service: name=postgresql-{{ postgresqlver }} state=started enabled=yes
+
+- name: Change postgresql password
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: postgres
+    password: '{{postgresql_password}}'
+
+
+- name: Create config dir
+  file:
+    path: /data/config/postgresql
+    state: directory
+
+
+- name: Create a PostgreSQL  symbolic link
+  file:
+    src: '{{item.src}}'
+    dest: '{{item.dest}}'
+    state: link
+  with_items:
+    - {src: '/data/pgsql/pg_hba.conf',dest: /data/config/postgresql/pg_hba.conf}
+    - {src: '/data/pgsql/pg_ident.conf',dest: /data/config/postgresql/pg_ident.conf}
+    - {src: '/data/pgsql/postgresql.conf',dest: /data/config/postgresql/postgresql.conf}
+
+- name: Check PostgreSQL
+  shell: psql -V
+  register: postgresql_ver
+  notify: [PostgreSQL Version,Check PostgreSQL Server for CentOS]

@@ -1,0 +1,72 @@
+---
+- name: Add PostgreSQL repository key
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+
+- name: Add PostgreSQL repository 
+  apt_repository:
+    repo: 'deb http://apt.postgresql.org/pub/repos/apt/ {{ansible_distribution_release}}-pgdg main'
+    filename: pgdg
+
+- name: Install PostgreSQL{{postgresqlver}}
+  apt:  
+    name: ['postgresql-{{postgresqlver}}',python-psycopg2]
+
+- name: Create Databases Directory
+  file:
+    path: /data/pgsql
+    state: directory
+    owner: postgres
+    group: postgres
+    mode: 0700
+
+- name: Change postgresql databases directory
+  lineinfile:
+      dest: /etc/postgresql/{{postgresqlver}}/main/postgresql.conf
+      regexp: "data_directory = '/var/lib/postgresql/{{postgresqlver}}/main'"
+      line: "data_directory = '/data/pgsql'"
+      state: present
+
+- name: Copy  databases
+  copy:
+    src: /var/lib/postgresql/{{postgresqlver}}/main/
+    dest: /data/pgsql
+    owner: postgres
+    group: postgres
+    mode: 0700
+    remote_src: yes
+
+- name: Change postgresql databases METHOD
+  lineinfile:
+      dest: /etc/postgresql/{{postgresqlver}}/main/pg_hba.conf
+      regexp: 'host    all             all             127.0.0.1/32            ident'
+      line: "host    all             all             127.0.0.1/32            md5"
+      state: present
+
+- name: Restart PostgreSQL Service
+  service: name=postgresql@{{postgresqlver}}-main.service state=restarted enabled=yes
+
+- name: Change postgresql password
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: postgres
+    password: '{{postgresql_password}}'
+
+
+- name: Create a PostgreSQL  symbolic link
+  file:
+    src: '{{item.src}}'
+    dest: '{{item.dest}}'
+    state: link
+  with_items:
+    - {src: '/etc/postgresql/{{postgresqlver}}/main',dest: /data/config/postgresql}
+    - {src: '/var/log/postgresql',dest: /data/logs/postgresql}
+
+
+
+
+- name: Check PostgreSQL
+  shell: psql -V
+  register: postgresql_ver
+  notify: [PostgreSQL Version,Check PostgreSQL Server for Ubuntu]
