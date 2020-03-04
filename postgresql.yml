@@ -42,7 +42,7 @@
       '5': '11'
     postgresql_version: "{{postgresql_select[postgresql_selection]}}" 
 
-    postgresql_select:
+    phppgadmin_select:
       '1': True
       'y': True
       '2': ''
