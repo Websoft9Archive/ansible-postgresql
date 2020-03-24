@@ -61,7 +61,6 @@
    - {role: role_cloud, tags: "role_cloud"}
    - {role: role_postgresql, tags: "role_postgresql"}
    - {role: role_docker, tags: "role_docker", when: phppgadmin_install_docker}
-   - {role: role_docker_phppgadmin, tags: "role_docker_phppgadmin", when: phppgadmin_install_docker}
    - {role: role_init_password, tags: "role_init_password"}
    - {role: role_preend, tags: "role_preend"}
    - {role: role_end, tags: "role_end"} 
