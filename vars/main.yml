@@ -1,7 +1,8 @@
 postgresql_root_password: "123456"
 docker_applications: 
   - phppgadmin
+  
 init_db: 
   postgresql:
-    user: root
+    admin: postgres
     password: "123456"
