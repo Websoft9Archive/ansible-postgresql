@@ -15,7 +15,9 @@
       2: PostgreSQL 9.5\n
       3: PostgreSQL 9.6\n
       4: PostgreSQL 10\n
-      5. PostgreSQL 11"
+      5: PostgreSQL 11\n
+      6: PostgreSQL 12\n
+      7: PostgreSQL 13\n"
       private: no
       default: 3
 
@@ -40,6 +42,8 @@
       '3': '9.6'
       '4': '10'
       '5': '11'
+      '6': '12'
+      '7': '13'
     postgresql_version: "{{postgresql_select[postgresql_selection]}}" 
 
     phppgadmin_select:
