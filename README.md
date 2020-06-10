@@ -21,6 +21,10 @@
 
 包含的核心组件为：PostgreSQL(9.4/9.5/9.6/10/11版本可选安装)，phppgadmin on Docker（可选安装项）
 
+* Ubuntu: 9.4 9.5 9.6 10 11 12 13
+* CentOS: 9.5 9.6 10 11 12
+
+
 更多请见[参数表](/docs/zh/stack-components.md)
 
 ## 本项目安装的是 PostgreSQL 最新版吗？
