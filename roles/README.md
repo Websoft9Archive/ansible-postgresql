@@ -1,1 +1,1 @@
-存放role
+ansible-galaxy install -r requirements.yml -f
