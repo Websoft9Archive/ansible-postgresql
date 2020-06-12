@@ -1,30 +1,41 @@
 # PostgreSQL速学
 
-### 连接 PostgreSQL Server
+PostgreSQL 是由 PostgreSQL 社区志愿者开发的开源关系型数据库系统，它源于 UC Berkeley 大学 1977 年的 Ingres 计划。它稳定可靠，有很多前言的技术特征，并且性能卓越，在数据完整性和正确性方面赢得了良好的市场声誉。
 
-~~~
-postgresql -u root –p
-Enter password:
+## 概念
 
-#exit postgresql if you want
-postgresql> exit  
-~~~
+### 数据类型
 
-## 常见命令
+PostgreSQL 支持官方的数据类型，包括：数据、JASON、JSONB 以及几何类型，还可以使用 SQL 命令创建自定义类型
 
-```
+### C/S 架构
 
-PostgreSQL [(none)]> create database 数据库名称;     #特别注意有分号
+PostgreSQL 本身是一个 C/S 架构的程序，即包括客户端程序和服务器程序。
 
-PostgreSQL [(none)]>  show  databases;                      #查看数据库
+* 客户端程序：psql, clusterdb, pgAdmin等
+* 服务器程序：initdb, pg_ctl, postgres, postmaster, pg_upgrade等
 
-PostgreSQL [(none)]>  exit;                                 #退出数据库控制台，特别注意有分号
+## 配置
 
-PostgreSQL [(none)]> drop database 数据库名称;     #删除数据库
+PostgreSQL 有两个重要的全局配置文件：postgresql.conf, pg_hba.conf。它们提供了很多可配置的参数，这些参数从不同层面影响着数据库的行为
 
-PostgreSQL [(none)]> exit;                                     #退出数据库控制台，特别注意有分号
+* postgresql.conf 配置文件主要负责配置文件位置、资源限制、集群负责等
+* pg_hba.conf 配置文件主要负责客户端的连接和认证
 
-PostgreSQL [(none)]> show databases;           #查看数据库: 如下图中3个数据库是默认数据库，不可删除
+### 连接方式
 
-```
-![websoft9-postgresql](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/postgresql_databases_default.png)
+PostgreSQL 允许四种连接方式，包括：
+
+* local: 基于 Unix 域套接字的连接方法，域套接字是进程间的一种非网络通信机制，效率高，安全可靠
+* host: 基于 TCP/IP 的连接，允许非 SSL 连接，默认值只允许 localhost 本地连接。
+* hostssl: 基于 TCP/IP 的 SSL 加密连接
+* hostnossl: 基于 TCP/IP 的非 SSL 连接
+
+### 认证方法
+
+PostgreSQL 常见的认证方法包括：
+
+* reject: 拒绝某一网段的少数特定主机
+* md5: 双种MD5加密
+* password: 明文密码
+* scram-sha-256: 基于SASL的加密认证，是 PostgreSQL 最安全的认证方式，但不支持 10 以下的版本

@@ -1,43 +1,47 @@
-# 图形化工具：PostgreSQL-Front
+# 图形化工具：pgAdmin
 
-PostgreSQL-Front是一款小巧的管理Mysql的应用程序。下面介绍常见的PostgreSQL-Front操作。
+[pgAdmin](https://www.pgadmin.org/) 是一款功能丰富、开源免费的 PostgreSQL 图形化客户端工具。它支持 Linux, Unix, Mac, Windows 等多种桌面操作系统。  
 
-## 远程连接PostgreSQL
+pgAdmin4 使用 Python 和 Javascript / jQuery 构建。可以在桌面上调用浏览器运行，也支持基于 Web 直接在浏览器运行。
 
-1. 打开PostgreSQL-Front，点击顶部菜单栏， 【文件】>【连接管理】
-     ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/websoft9-postgresql-fronttest.png)
+本节介绍 pgAdmin 连接和管理数据库等常见操作
 
-2. 自定义连接名，主机为数据库所在的主机ip地址（[不知道账号密码？](/zh/stack-accounts.md)）
-   ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/websoft9-postgresql-frontcome.png)
+### 安装与连接
 
-3. 点击“确定”后，在连接管理窗口上点击“打开”，系统无任何提示及警告即表示连接成功
+1. [下载](https://www.pgadmin.org/download/) pgAdmin Windows 版
 
-## 新增数据库
+2. 安装完成后，双击 pgAdmin 图标，会启动默认浏览器中打开 pgAdmin
 
-1. 登录数据库
+3. 根据提示，先设置一个 pgAdmin 管理密码
+  ![设置pgAdmin管理密码](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-setmasterpw-websoft9.png)
 
-2. 在连接管理窗口上点击“打开”，一个新的数据库变建立成功
+4. 设置所需管理的 PostgreSQL 数据库连接信息([不知道密码？](/zh/stack-accounts.md#postgresql))
+  ![设置pgAdmin连接信息](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-setconnection-websoft9.png)
 
-3. 登录成功进入到数据库操作界面，该界面为图形化操作，方便、简洁
-  ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/websoft9-postgresql-frontteacher3.png)
+3. 成功连接
+  ![phpPgadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-console-websoft9.png)
 
-> 注意：可以在本地导入数据库，此次操作导入数据库名为postgresql。
+### 创建数据库
 
-## 数据库导入和导出
+1. 鼠标右键一次点击：【Servers】>【Create】>【Database】，创建数据库
+  ![pgAdmin 创建数据库](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-createdb-websoft9.png)
 
-导入即恢复数据库，导出即备份数据库。这个两个操作对SQL-Front来说比较简单，具体如下：
+2. 设置数据库名称、编码等信息，创建数据库
 
-1. 登录数据库
 
-2. 右击你选择的数据库名，完成：【导入】>【SQL文件】，选择本地已有的*.sql数据库备份文件
-   ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/websoft-postgresql-frontcome2.png)
+### 创建用户
 
-3. 点击上方导航栏的大的绿色按钮即可执行
+PostgreSQL 中创建用户就是创建 Role
 
-  >注意：根据实际情况选择默认的字符集，一般选择UTF-8
+1. 鼠标右键一次点击：【Servers】>【Create】>【Login/Group Role】，创建用户
+  ![pgAdmin 创建用户](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-createroles-websoft9.png)
 
-4. 选择备份的数据库，右击你选择的数据库名，依次完成：【导出】>【SQL文件】，完成数据库备份
+2. 设置用户名称、密码等信息，创建用户
 
-## 运行SQL语句
- 
-点击工具栏中：【视图】>【SQL编辑器】，手动编写SQL语句并执行
+
+### 备份数据库
+
+1. 选择需要备份的数据库，点击【Backup】操作
+  ![pgAdmin 创建数据库](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-backupdb-websoft9.png)
+
+2. 备份并下载到本地

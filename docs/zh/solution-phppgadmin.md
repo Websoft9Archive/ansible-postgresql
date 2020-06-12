@@ -2,42 +2,37 @@
 
 phpPgAdmin是很受欢迎的PostgreSQL数据库管理工具，下面介绍常见的phpPgAdmin操作
 
-## 修改root密码
+### 登录
 
-1. 登录phpPgAdmin后，默认页面-常规设置，点击“修改密码” ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-modifypw-websoft9.png)
-2. 修改密码-&gt;保存-&gt;退出登录，刷新浏览器后便可以使用新密码登录了
+1. 本地浏览器 Chrome 或 Firefox 访问：*http://服务器公网IP:9090*，进入phpPgAdmin
+  ![登录phpMyadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin.png)
+2. 输入数据库用户名和密码([不知道密码？](/zh/stack-accounts.md#postgresql))
+3. 开始管理数据库
+  ![phpPgadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-gui-websoft9.png)
 
-## 新增数据库
+### 创建数据库
 
-1. 登录phpPgAdmin后，点击左侧菜单栏的“新建”，进入如下的数据库创建界面 ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-adddb-websoft9.png)
-2. 填写数据库名-&gt;点击创建按钮，一个新的数据库变建立成功
-3. 默认情况下，root拥有新建的数据库的全部权限
+1. 在【数据库】标签下，点击【创建数据库】链接
+  ![phpPgadmin 创建数据库](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-createdb-websoft9.png)
 
-## 新增数据库用户
+2. 设置数据库名称、编码等信息，创建数据库
 
-> 数据库用户与数据库是分离的，是“多对多”的关系。可以通过关联使得某个用户具有某个数据库的权限
 
-1. 登录phpPgAdmin后，点击左侧菜单栏中新打算对其新增用户的数据库（例如：mywebsoft9）
-2. 点击顶部菜单栏的“权限”，找到“新增用户账户”，如下新增用户界面 ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-adduser-websoft9.png)
-3. 根据上图填写用户名、主机地址和密码，然后关联对应的数据库和勾选权限设置
-4. 点击“执行”，就完成新增用户和数据库关联了
+### 创建用户
 
-说明：也可以登录phpPgAdmin的默认页面后，点击顶部菜单上“账户”，对用户和权限进行管理
+PostgreSQL 中创建用户就是创建 Role
 
-## 数据库导入和导出
+1. 在【Roles】标签下，点击【Create role】链接
+  ![phpPgadmin 创建用户](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-createroles-websoft9.png)
 
-> 导出即备份数据库，导入即恢复数据库。这个两个操作对phpPgAdmin来说比较简单，具体如下：
+2. 设置用户名称、密码等信息，创建用户
 
-1. 登录phpPgAdmin后，选择您需要操作的数据库后，点击顶部菜单栏的“导出” ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-export-websoft9.png)
-2. 选择导出方式（默认为“快速”）和格式（默认为“SQL”），点击“执行”按钮
-3. 数据库备份文件（.sql后缀）生成后，保存到本地完成导出工具
-4. 恢复数据库，对应的是“导入”操作，具体参考下图 ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-import-websoft9.png)
-5. 导入文件特别要注意字符集兼容性
 
-## phpPgAdmin 限制特定 IP 访问
+### 备份数据库
 
-把 phpPgAdmin.conf（```/etc/httpd/conf.d/phpmyAdmin.conf```）文件中的：  
-     ```Require all granted``` 
-改为：  
-     ```Require ip xxx.xxx.xxx.xxx```  
-这样，只有指定 IP 的主机能访问 phpPgAdmin，IP还可以缩写：192.168.*.* 这样则表示以 192.168 开头的 IP 段都能访问。 修改完成后需要重启 Apache
+1. 选择需要备份的数据库，点击【导出】标签，勾选【Download】后，点击【导出】
+  ![phpPgadmin 创建数据库](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-dl-websoft9.png)
+
+2. 系统提示下载导出文件
+
+3. 备份成功

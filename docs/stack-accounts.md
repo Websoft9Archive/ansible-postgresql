@@ -4,7 +4,7 @@ These accounts are required for PostgreSQL image installation and configuration
 
 ## PostgreSQL
 
-* Administrator username: *`root`*
+* Administrator username: *`postgres`*
 * Administrator password: stored in the file of your server instance: */credentials/password.txt*. 
   
   Use the **SSH** and run the command `cat /credentials/password.txt` to get password  

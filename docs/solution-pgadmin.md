@@ -1,23 +1,47 @@
-# GUI: PostgreSQL-Front
+# GUI: pgAdmin
 
-PostgreSQL-Front is a Windows front end program for the PostgreSQL database server. The database structure and data can be handled via dialogs or SQL commands. Import and Export in standard file formats is supported. The database server can be connected directly or via HTTP tunneling.
+[pgAdmin](https://www.pgadmin.org/) is rich Open Source administration and development platform for PostgreSQL 
 
-## Connect PostgreSQL
+pgAdmin is built using Python and Javascript/jQuery. A desktop runtime written in C++ with Qt allows it to run standalone for individual users, or the web application code may be deployed directly on a webserver for use by one or more users through their web browser. 
 
-1. Open PostgreSQL-Front, go to File->Open Connection->New
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresqlfront/postgresqlfront-newconn-websoft9.png)
+We will introduce the basic managements about pgAdmin
 
-2. Login it([Don't know password](/stack-accounts.md#postgresql))
-   
-3. The login successfully enters the database operation interface, which is a graphical operation, convenient and concise
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresqlfront/postgresqlfront-ui-websoft9.png)
+### Install and Connection
 
-## Add new database
+1. [Download](https://www.pgadmin.org/download/) and install pgAdmin for Windows
 
-1. Login PostgreSQL with PostgreSQL-Front
+2. Installation completed, click the pgAdmin icon, you can see the pgAdmin running on your default browser
 
-2. Go to 【database】>【new】
+3. Set your pgAdmin master password first
+  ![set pgAdmin password](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-setmasterpw-websoft9.png)
 
-## Import and export
+4. Set your PostgreSQL database connection ([don't known password](/stack-accounts.md#postgresql))
+  ![set pgAdmin connection](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-setconnection-websoft9.png)
 
-Importing restores the database, and exporting backs up the database.
+3. 成功连接
+  ![phpPgadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-console-websoft9.png)
+
+### Create database
+
+1. Right mouse click 【Servers】>【Create】>【Database】, create new database
+  ![pgAdmin create database](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-createdb-websoft9.png)
+
+2. Set your database name, Encoding..., then create it
+
+
+### Create user
+
+PostgreSQL roles is similar with users
+
+1. Right mouse click 【Servers】>【Create】>【Login/Group Role】, create new user
+  ![pgAdmin create user](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-createroles-websoft9.png)
+
+2. Set your database username, password..., then create it
+
+
+### Backup database
+
+1. Select the database you want to export, click 【Backup】button
+  ![pgAdmin 创建数据库](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-backupdb-websoft9.png)
+
+2. Start you backup

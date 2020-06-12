@@ -1,12 +1,24 @@
 # FAQ
 
+#### What type of client is pgAdmin?
+
+pgAdmin is a web based client, even if installed under Windows, it is accessed indirectly by calling the browser
+
+#### What are the Client and Server of PostgreSQL?
+
+PostgreSQL Server refers to the PostgreSQL program ontology, and PostgreSQL Client refers to the client that uses TCP protocol to connect to the program local. They are two completely different programs, which means that they do not need to be installed on the same service at the same time.
+
+#### What is the default database when completed the PostgreSQL deployment?
+
+postgres
+
 #### What is the password for the database root user?
 
 The password is stored in the server related file: `/credentials/password.txt`
 
 #### Is there a web-base GUI database management tools?
 
-Yes, phpPgAdmin is on it, visit by *http://Server Internet IP:9090*
+Yes, phpPgAdmin or pgAdmin running on Docker, visit by *http://Server Internet IP:9090*
 
 #### Can I connect PostgreSQL from Internet(remote)?
 
@@ -18,7 +30,7 @@ Run command `ps ``-``ef ``| grep postgresqld` to list postgresql process
 
 #### Can I modify the root directory of PostgreSQL?
 
-Yes, please refer the documentation [Modify PostgreSQL Data Directory](/solution-more.html#modify-postgresql-data-directory)
+Yes, please refer the documentation [Modify PostgreSQL Data Directory](/solution-more.html#change-pgdata-directory)
 
 #### What's the difference between Deployment and Installation?
 

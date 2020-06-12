@@ -26,17 +26,53 @@ yum update -y
 
 ## PostgreSQL Upgrade
 
-### On Linux
+PostgreSQL provides a major version upgrade tool **pg_upgrade**. Upgrading is always more complicated, only the common parameters of **pg_upgrade** are listed here
 
-The system update command can update PostgreSQL patch also, e.g: 5.6.x to 5.6.y or 5.7.x to 5.7.y
+```
+pg_upgrade --help
 
-There are large differences between database distribution versions, which cannot provide a secure upgrade solution
+pg_upgrade upgrades a PostgreSQL cluster to a different major version.
 
-### On Windows
+Usage:
+  pg_upgrade [OPTION]...
 
-### On Windows
+Options:
+  -b, --old-bindir=BINDIR       old cluster executable directory
+  -B, --new-bindir=BINDIR       new cluster executable directory
+  -c, --check                   check clusters only, don't change any data
+  -d, --old-datadir=DATADIR     old cluster data directory
+  -D, --new-datadir=DATADIR     new cluster data directory
+  -j, --jobs=NUM                number of simultaneous processes or threads to use
+  -k, --link                    link instead of copying files to new cluster
+  -o, --old-options=OPTIONS     old cluster options to pass to the server
+  -O, --new-options=OPTIONS     new cluster options to pass to the server
+  -p, --old-port=PORT           old cluster port number (default 50432)
+  -P, --new-port=PORT           new cluster port number (default 50432)
+  -r, --retain                  retain SQL and log files after success
+  -U, --username=NAME           cluster superuser (default "root")
+  -v, --verbose                 enable verbose internal logging
+  -V, --version                 display version information, then exit
+  -?, --help                    show this help, then exit
 
-PostgreSQL upgrade on Windows Server divided into two parts
+Before running pg_upgrade you must:
+  create a new database cluster (using the new version of initdb)
+  shutdown the postmaster servicing the old cluster
+  shutdown the postmaster servicing the new cluster
 
-1. Use Windows Update to upgrade Windows System
-2. Dowload the lastest PostgreSQL, stop the PostgreSQL Services and replace the old files of PostgreSQL
+When you run pg_upgrade, you must provide the following information:
+  the data directory for the old cluster  (-d DATADIR)
+  the data directory for the new cluster  (-D DATADIR)
+  the "bin" directory for the old version (-b BINDIR)
+  the "bin" directory for the new version (-B BINDIR)
+
+For example:
+  pg_upgrade -d oldCluster/data -D newCluster/data -b oldCluster/bin -B newCluster/bin
+or
+  $ export PGDATAOLD=oldCluster/data
+  $ export PGDATANEW=newCluster/data
+  $ export PGBINOLD=oldCluster/bin
+  $ export PGBINNEW=newCluster/bin
+  $ pg_upgrade
+
+Report bugs to <pgsql-bugs@postgresql.org>.
+```

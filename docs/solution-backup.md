@@ -37,37 +37,12 @@ Different Cloud Platform's snapshot settings slightly different, refer to [Cloud
 
 ### Manual backup for application
 
-Manual backup for application is based on the **Exporting source code and database of application** to achieve a minimized backup scheme.
+There three main methods for PostgreSQL backup: 
 
-```
-- Backup scope: Source code and database of application
-- Backup effect: Good
-- Backup frequency: You can operate when you need
-- Recovery methond: Import
-- Skill requirement: Easy 
-- Automation: manual
-```
-The general manual backup operation steps are as follows:
+* User **pg_dump, pg_dumpall, pgAdmin, phpPgAdmin** to export databse(SQL dump)
+* Use **pg_basebackup** for incremental backup and time-based recovery
+* Database files copy and download directly
 
-1. Export database by phpPgAdmin or other GUI tools
-2. Download it to local computer
-3. Backup completed
+Database files copy is same with **snapshot backup** on your Cloud platform  
 
-In phpPgAdmin, Export is to back up the database, import and restore the database.
-
-#### Export
-
-1. Login to phpPgAdmin, select your database then click "Export" tab on the top menu
-   ![](http://libs.websoft9.com/Websoft9/DocsPicture/en/phppgadmin/phppgadmin-export-websoft9.png)
-
-2. Select suitable Export method,Format for you, then click the "Go" button to start export
-
-3. After the database backup file (.sql suffix) is generated, save it to the local computer
-
-
-#### Import
-
-1. Restore the database, corresponding to the "Import" operation, refer to the following
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/postgresql-import-websoft9.png)
-
-2. Import files should pay special attention to character set compatibility
+Get more details about backup, please refer to PostgreSQL official docs [PostgreSQL Backup](https://www.postgresql.org/docs/12/backup.html)

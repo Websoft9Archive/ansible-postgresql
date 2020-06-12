@@ -41,37 +41,10 @@ sidebarDepth: 3
 
 ### PostgreSQL应用备份
 
-PostgreSQL上的应用备份主要通过**下载Volume**实现最小化的备份方案。
+PostgreSQL上的应用备份有多种[备份方案](https://www.postgresql.org/docs/12/backup.html)，常见包括：
 
-下面以列表的方式介绍这种备份：
-```
-- 备份范围: 数据库和应用程序
-- 备份效果: 一般
-- 备份频率: 一周最低1次，备份保留30天
-- 恢复方式: 重新导入
-- 技能要求：非常容易
-- 自动化：无
-```
-通用的手动备份操作步骤如下：
+* 使用 pg_dump, pg_dumpall, pgAdmin, phpPgAdmin等工具进行数据库导出（SQL转存）
+* 使用 pg_basebackup等工具实现增量备份和基于时间的恢复
+* 数据库文件目录直接复制
 
-1. 使用phpPgAdmin等可视化工具，导致数据库（建议SQL格式）
-2. 将备份文件下载到本地，备份工作完成
-
-In phpPgAdmin, Export is to back up the database, import and restore the database.
-
-#### Export
-
-1. Login to phpPgAdmin, select your database then click "Export" tab on the top menu
-   ![](http://libs.websoft9.com/Websoft9/DocsPicture/en/phppgadmin/phppgadmin-export-websoft9.png)
-
-2. Select suitable Export method,Format for you, then click the "Go" button to start export
-
-3. After the database backup file (.sql suffix) is generated, save it to the local computer
-
-
-#### Import
-
-1. Restore the database, corresponding to the "Import" operation, refer to the following
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/postgresql-import-websoft9.png)
-
-2. Import files should pay special attention to character set compatibility
+其中数据库文件目录直接复制等同于服务器快照备份，无需重复再做。

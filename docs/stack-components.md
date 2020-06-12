@@ -14,13 +14,13 @@ PostgreSQL data directory: */data/postgresql/pgdata*
 PostgreSQL configuration directory: */data/postgresql/config*  
 PostgreSQL logs directory: */data/postgresql/log*  
 
-> 以上列出的是通过软连接创建的目录，请通过 `locate pg_hba.conf` 这样的命令查询更多文件路径信息
+> The above list is the directory created by soft link, please query more file path information through commands like `locate pg_hba.conf`
 
 #### phpPgAdmin on Docker
 
 We used Docker to install phpPgAdmin
 
-> Docker 相关路径请查看我们编写的 [Docker 管理员手册](https://support.websoft9.com/docs/docker/zh/stack-components.html)
+> Get more details about Docker from our documentation [Docker administrator guide](https://support.websoft9.com/docs/docker/stack-components.html)
 
 ### Windows Sever
 
@@ -30,14 +30,12 @@ Coming soon...
 
 You can control(open or shut down) ports by **[Security Group Setting](https://support.websoft9.com/docs/faq/tech-instance.html)** of your Cloud Server whether the port can be accessed from Internet.
 
-通过命令 `netstat -tunlp` 看查看相关端口, These ports should be opened for this application:
+Use the command `netstat -tunlp` to check ports, these ports should be opened for this application:
 
 | Name | Number | Use |  Necessity |
 | --- | --- | --- | --- |
-| phpPgAdmin on Docker | 9090 | HTTP to visit phpPgAdmin | Optional |
-| PostgreSQL | 3306 | remote connect PostgreSQL | Optional |
-| TCP | 9090 | 通过 HTTP 访问 phpPgAdmin | 可选 |
-| TCP | 5432 | 远程连接PostgreSQL | 可选 |
+| TCP | 9090 | HTTP to visit phpPgAdmin | Optional |
+| TCP | 5432 | remote connect PostgreSQL | Optional |
 
 ## Version
 

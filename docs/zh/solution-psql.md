@@ -1,6 +1,6 @@
 # CLI：PSQL
 
-PSQL 是 PostgreSQL 自带的命令行客户端工具，具有非常丰富的功能。本节介绍 PSQL 常用的功能和用法。
+PSQL 是 PostgreSQL 自带的命令行客户端工具，有非常丰富的功能。本节介绍 PSQL 常用的功能和用法。
 
 #### 连接数据库
 

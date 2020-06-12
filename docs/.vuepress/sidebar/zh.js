@@ -18,8 +18,6 @@ module.exports = [
     children: [
       '/zh/solution-study',
       '/zh/solution-psql',
-      '/zh/solution-password',
-      '/zh/solution-remote',
       '/zh/solution-phppgadmin',
       '/zh/solution-pgadmin',
       '/zh/solution-navicat',
