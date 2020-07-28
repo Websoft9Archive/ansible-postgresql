@@ -1,3 +1,4 @@
+common_os_support: ["CentOS", "Ubuntu", "Amazon"]
 postgresql_root_password: "123456"
 docker_applications: 
   - phppgadmin
