@@ -13,6 +13,7 @@ init_docker:
     admin_username: user@domain.com
     admin_password: "SuperSecret"
     db: postgresql
+    db_name: postgres
     db_username: postgres
     db_password: "123456"
     service_after: "docker.service"
