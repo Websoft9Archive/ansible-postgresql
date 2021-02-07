@@ -16,9 +16,9 @@ PostgreSQL 日志目录: */data/postgresql/log*
 
 > 以上列出的是通过软连接创建的目录，请通过 `locate pg_hba.conf` 这样的命令查询更多文件路径信息
 
-#### phpPgAdmin on Docker
+#### phpPgAdmin 或 pgAdmin on Docker
 
-phpPgAdmin 是采用 Docker 方式来安装的  
+phpPgAdmin 或 pgAdmin 是采用 Docker 方式来安装的  
 
 > Docker 相关路径请查看我们编写的 [Docker 管理员手册](https://support.websoft9.com/docs/docker/zh/stack-components.html)
 

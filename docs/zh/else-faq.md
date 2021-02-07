@@ -1,5 +1,13 @@
 # FAQ
 
+#### phpPgAdmin 与 pgAdmin 哪个更好？
+
+pgAdmin
+
+#### pgAdmin 支持多语言吗？
+
+支持数十种语言（包含中文）
+
 #### pgAdmin 是什么类型的客户端？
 
 pgAdmin 是通过浏览器访问的客户端，即使在 Windows 下安装，也是间接调用浏览器来访问的

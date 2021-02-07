@@ -33,9 +33,11 @@ PostgreSQL 允许四种连接方式，包括：
 
 ### 认证方法
 
-PostgreSQL 常见的认证方法包括：
+PostgreSQL 常见的[认证方法](https://www.postgresql.org/docs/current/auth-methods.html)包括：
 
 * reject: 拒绝某一网段的少数特定主机
 * md5: 双种MD5加密
 * password: 明文密码
 * scram-sha-256: 基于SASL的加密认证，是 PostgreSQL 最安全的认证方式，但不支持 10 以下的版本
+* trust： 完全信任
+* peer：基于 unix socket 免密连接

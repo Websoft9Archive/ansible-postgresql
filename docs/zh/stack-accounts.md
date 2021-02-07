@@ -1,25 +1,37 @@
 # 账号密码
 
-使用PostgreSQL，可能会用到的几组账号密码如下：
+通过**SSH**连接云服务器，运行 `sudo cat /credentials/password.txt` 命令，查看所有相关账号和密码
+
+![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
+
+下面列出可能需要用到的几组账号密码：
 
 ## PostgreSQL
 
-* 管理员账号：*`postgres`*
-* 管理员密码：存储在您的服务器指定文件中   
+- Linux 系统
 
-  - Linux 系统  
+   * 管理员账号：*`postgres`*
+   * 管理员密码：存储在您的服务器中的文件中 */credentials/password.txt*  
 
-     **密码存储路径**：*/credentials/password.txt*    
-     **获取方式**： 建议通过云控制台的命令终端，运行下图**红框**所示命令，获取数据库密码   
-     ![运行cat命令](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
-
-  - Windows 系统  
+- Window 系统
 
      **密码存储路径**：*C:/credentials/password.txt*     
      **获取方式**： 远程桌面到服务器，打开此文件即可   
 
- > 需要登录PostgreSQL，请参考 [图形化工具：phpPgAdmin](/zh/solution-phppgadmin.md)
+ > 需要登录PostgreSQL，请参考图形化工具 [phpPgAdmin](/zh/solution-phppgadmin.md) 或 [PgAdmin](/zh/solution-pgadmin.md)
 
+## phpPgAdmin
+
+phpPgAdmin 共用 PostgreSQL 的账号密码
+
+## pgAdmin 
+
+pgAdmin 有自己的账号密码体系：
+
+* 管理员账号: `user@domain.com`
+* 管理员密码: `存储在您的服务器中的文件中 */credentials/password.txt*  
+
+> 登录 pgAdmin 之后请务必修改它的密码
 
 ## Linux
 
@@ -30,11 +42,11 @@
    |  云平台   |  管理员账号   | 其他|
    | --- | --- | --- |
    |  Azure   |  创建服务器的时候自行设置   | [如何开启root账户？](https://support.websoft9.com/docs/azure/zh/server-login.html#示例2：启用系统root账号) |
-   |  AWS Centos 系统   |  centos   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号) |
+   |  AWS CentOS 系统   |  centos   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号) |
+   |  AWS AmazonLinux 系统   | ec2-user   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号) |
    |  AWS Ubuntu 系统  |  ubuntu   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号)  |
    |  阿里云，华为云，腾讯云   |  root   | |
-
-
+   
 ## Windows
 
 * 主机地址：服务公网IP地址

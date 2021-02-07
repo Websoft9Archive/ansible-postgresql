@@ -6,20 +6,38 @@ pgAdmin is built using Python and Javascript/jQuery. A desktop runtime written i
 
 We will introduce the basic managements about pgAdmin
 
-### Install and Connection
+### Login pgAdmin
+
+You can login to phpAdmin directly if you have deploy Websoft9 solution of PostgreSQL:
+
+1. Local browser Chrome or Firefox access URL: *http://server's Internet IP:9090*, enter to pgAdmin
+   ![login pgAdmin](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-loginui-websoft9.png)
+
+2. Input pgAdmin administrator account([view username and password](/stack-accounts.md#postgresql)) and enter to console
+   ![pgAdmin console](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-console-websoft9.png)
+
+### Install pgAdmin Desktop
+
+pgAdmin can also used in you local computer:
 
 1. [Download](https://www.pgadmin.org/download/) and install pgAdmin for Windows
 
-2. Installation completed, click the pgAdmin icon, you can see the pgAdmin running on your default browser
+2. Click the pgAdmin icon, you can see the pgAdmin running on your default browser
 
 3. Set your pgAdmin master password first
-  ![set pgAdmin password](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-setmasterpw-websoft9.png)
+  ![set pgAdmin password](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-setmasterpw-websoft9.png)
 
-4. Set your PostgreSQL database connection ([don't known password](/stack-accounts.md#postgresql))
-  ![set pgAdmin connection](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-setconnection-websoft9.png)
+### Connect pgAdmin
 
-3. 成功连接
-  ![phpPgadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-console-websoft9.png)
+Once you have enter to pgAdmin console, you can connect PostgreSQL server now:
+
+1. Click 【server】 to connect PostgreSQL server
+
+2. Set your PostgreSQL database connection ([don't known password](/stack-accounts.md#postgresql))
+  ![set pgAdmin connection](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-createserver-websoft9.png)
+
+2. Login to console successfully
+  ![phpPgadmin](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-console-websoft9.png)
 
 ### Create database
 

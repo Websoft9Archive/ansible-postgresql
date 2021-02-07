@@ -34,17 +34,36 @@ Type "help" for help.
 postgres=#
 ```
 
-### Login PostgreSQL with phpPgAdmin
+### Login PostgreSQL with GUI tool
+
+#### phpPgAdmin
 
 If you used the deployment solution included the phpPgAdmin, the database management is very easy
 
-1. Using local Chrome or Firefox to visit the URL *http://Internet IP:9090* to visit phpPgAdmin
+1. Using local Chrome or Firefox to visit the URL *http://server's Internet IP:9090* to visit phpPgAdmin
   ![login phpPgAdmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-login-websoft9.png)
 2. Input your database account([Don't know password?](/stack-accounts.md#postgresql))
 3. Start using phpPgAdmin to modify root password of PostgreSQL
   ![phpMyadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-gui-websoft9.png)
 
-> More useful phpPgAdmin guide, please refer to [phpPgAdmin chapter](/solution-phppgadmin.md) of this documentation
+#### pgAdmin
+
+1. Using local Chrome or Firefox to visit the URL *http://server's Internet IP:9090* to access pgAdmin
+   ![access pgAdmin](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-loginui-websoft9.png)
+
+2. Input pgAdmin administrator account([view username and password](/stack-accounts.md#postgresql)) and enter to console
+   ![pgAdmin console](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-console-websoft9.png)
+
+3. Click【Server】 to add PostgreSQL connection([don't known password?](/stack-accounts.md#postgresql))
+   ![pgAdmin connect server](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-createserver-websoft9.png)
+
+4. You can enter to pgAdmin console successfully
+   ![pgAdmin console](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-console-websoft9.png)
+
+5. Modify password if you want
+   ![pgAdmin modify password](https://libs.websoft9.com/Websoft9/DocsPicture/en/postgresql/pgadmin-modifypw-websoft9.png)
+
+> More useful phpPgAdmin guide, please refer to [phpPgAdmin](/solution-phppgadmin.md) or [pgAdmin](/solution-pgadmin.md) of this documentation
 
 
 ## Q&A
@@ -53,6 +72,6 @@ If you used the deployment solution included the phpPgAdmin, the database manage
 
 Your TCP:9090 of Security Group Rules is not allowed so there no response from Chrome or Firefox
 
-#### How phpPgAdmin installed?
+#### How phpPgAdmin or pgAdmin installed?
 
-Install phpPgAdmin used Docker, that can make sure PostgreSQL environment has good isolation
+Install phpPgAdmin or pgAdmin used Docker, that can make sure PostgreSQL environment has good isolation

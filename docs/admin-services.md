@@ -2,7 +2,7 @@
 
 These commands you must know when you using the PostgreSQL of Websoft9
 
-### Linux系统
+### Linux
 
 #### PostgreSQL
 ```shell
@@ -19,6 +19,25 @@ sudo systemctl start docker
 sudo systemctl restart docker
 sudo systemctl stop docker
 sudo systemctl status docker
+```
+
+#### pgAdmin
+
+```shell
+sudo docker start pgadmin
+sudo docker restart pgadmin
+sudo docker stop pgadmin
+sudo docker stats pgadmin
+```
+
+
+#### phpPgAdmin
+
+```shell
+sudo docker start pgadmin
+sudo docker restart pgadmin
+sudo docker stop pgadmin
+sudo docker stats pgadmin
 ```
 
 ### Windows

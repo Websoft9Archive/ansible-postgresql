@@ -21,6 +21,25 @@ sudo systemctl stop docker
 sudo systemctl status docker
 ```
 
+#### pgAdmin
+
+```shell
+sudo docker start pgadmin
+sudo docker restart pgadmin
+sudo docker stop pgadmin
+sudo docker stats pgadmin
+```
+
+
+#### phpPgAdmin
+
+```shell
+sudo docker start pgadmin
+sudo docker restart pgadmin
+sudo docker stop pgadmin
+sudo docker stats pgadmin
+```
+
 ### Windows 系统
 
 Windows下的镜像采用操作系统的服务管理功能，来实现 PostgreSQL 的启动、停止和重启操作

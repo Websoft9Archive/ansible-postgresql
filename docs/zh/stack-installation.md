@@ -36,24 +36,51 @@ Type "help" for help.
 postgres=#
 ```
 
-### phpPgAdmin 连接 PostgreSQL
+### 图形化工具连接 PostgreSQL
 
-如果部署方案中包含 phpPgAdmin 等图形化工具，使用就更加便捷方便：
+如果部署方案中包含 phpPgAdmin 或 pgAdmin 图形化工具，使用就更加便捷方便：
 
-1. 本地浏览器 Chrome 或 Firefox 访问：*http://服务器公网IP:9090*，进入phpPgAdmin
-  ![登录phpMyadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin.png)
+#### phpPgAdmin
+
+1. 本地浏览器 Chrome 或 Firefox 访问：*http://服务器公网IP:9090*，进入 phpPgAdmin
+   ![登录phpPgAdmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin.png)
+   图1. phpPgAdmin 界面
+
 2. 输入数据库用户名和密码([不知道密码？](/zh/stack-accounts.md#postgresql))
-3. 开始管理数据库
-  ![phpPgadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-gui-websoft9.png)
 
-> 需要了解更多 phpPgAdmin 的使用，请参考本文档 [phpPgAdmin 章节](/zh/solution-phppgadmin.md)
+3. 开始管理数据库
+   ![phpPgadmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/phppgadmin-gui-websoft9.png)
+
+#### pgAdmin
+
+1. 本地浏览器 Chrome 或 Firefox 访问：*http://服务器公网IP:9090*，进入 pgAdmin
+   ![登录pgAdmin](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-loginui-websoft9.png)
+
+2. 输入 pgAdmin 管理员的用户名和密码([查看账号密码](/zh/stack-accounts.md#postgresql))之后，进入控制台
+   ![pgAdmin 控制台](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-console-websoft9.png)
+
+2. 点击【Server】>【添加服务器】，使用 pgAdmin 连接 PostgreSQL 数据库([不知道密码？](/zh/stack-accounts.md#postgresql))
+   ![pgAdmin 连接服务器](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-createserver-websoft9.png)
+
+3. 开始管理数据库
+   ![pgAdmin 管理数据库](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-serverss-websoft9.png)
+
+4. 修改密码
+   ![pgAdmin 修改密码](https://libs.websoft9.com/Websoft9/DocsPicture/zh/postgresql/pgadmin-modifypw-websoft9.png)
+
+> 需要了解更多使用，请参考本文档 [phpPgAdmin 章节](/zh/solution-phppgadmin.md) 或  [pgAdmin 章节](/zh/solution-pgadmin.md) 
+
 
 ## 常见问题
 
-#### 浏览器无法访问 phpPgAdmin（白屏没有结果）？
+#### 浏览器无法访问图形化界面（白屏没有结果）？
 
-您的服务器对应的安全组9090端口没有开启（入规则），导致浏览器无法它
+您的服务器对应的安全组 9090 端口没有开启（入规则），导致浏览器无法它
 
-#### phpPgAdmin 是如何安装的？
+#### phpPgAdmin 或 pgAdmin 是如何安装的？
 
 采用 Docker 安装，保证 PostgreSQL 环境具有良好的隔离性。
+
+#### 为什么我的系统中没有 pgAdmin ？
+
+由于产品设计原因，我们从 2021年2月之后的产品中才包含 pgAdmin

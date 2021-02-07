@@ -16,9 +16,9 @@ PostgreSQL logs directory: */data/postgresql/log*
 
 > The above list is the directory created by soft link, please query more file path information through commands like `locate pg_hba.conf`
 
-#### phpPgAdmin on Docker
+#### phpPgAdmin or pgAdmin on Docker
 
-We used Docker to install phpPgAdmin
+We used Docker to install phpPgAdmin or pgAdmin
 
 > Get more details about Docker from our documentation [Docker administrator guide](https://support.websoft9.com/docs/docker/stack-components.html)
 

@@ -1,6 +1,8 @@
 # 图形化工具：Navicat
 
-如果你已经开启服务器安全组 5432 端口，并设置完成 PostgreSQL 远程连接，可以参考如下的步骤使用 Navicat：
+Navicat 是一个商业版的桌面数据库 GUI 工具。  
+
+若已开启服务器安全组 5432 端口，并设置好 PostgreSQL 远程连接，可以参考如下的步骤它：
 
 1. 打开Navicat Premium，点击顶部菜单栏， 【文件】>【新建连接】>【PostgreSQL】
 

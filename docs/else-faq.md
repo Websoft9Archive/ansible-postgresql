@@ -1,5 +1,13 @@
 # FAQ
 
+#### phpPgAdmin vs pgAdmin, which is better?
+
+pgAdmin
+
+#### pgAdmin support multiply languages?
+
+Yes
+
 #### What type of client is pgAdmin?
 
 pgAdmin is a web based client, even if installed under Windows, it is accessed indirectly by calling the browser

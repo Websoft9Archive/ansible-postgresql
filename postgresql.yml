@@ -28,8 +28,8 @@
       private: no
       default: 1
 
-    - name: 'phppgadmin_selection'
-      prompt: "\nDo you want to install phppgadmin of Docker? [ 1/2 ] \n\n
+    - name: 'pgadmin_selection'
+      prompt: "\nDo you want to install pgAdmin of Docker? [ 1/2 ] \n\n
       1: Yes\n
       2: No\n"
       private: no
@@ -46,7 +46,7 @@
       '7': '13'
     postgresql_version: "{{postgresql_select[postgresql_selection]}}" 
 
-    phppgadmin_select:
+    pgadmin_select:
       '1': True
       'y': True
       '2': ''
@@ -57,14 +57,14 @@
       '2': False
       
     
-    phppgadmin_install_docker: "{{phppgadmin_select[phppgadmin_selection]}}" 
-    postgresql_remote: "{{remote_select[remote_selection]}} or {{phppgadmin_select[phppgadmin_selection]}}" 
+    pgadmin_install_docker: "{{pgadmin_select[pgadmin_selection]}}" 
+    postgresql_remote: "{{remote_select[remote_selection]}} or {{pgadmin_select[pgadmin_selection]}}" 
   
   roles:
    - {role: role_common, tags: "role_common"}   
    - {role: role_cloud, tags: "role_cloud"}
    - {role: role_postgresql, tags: "role_postgresql"}
-   - {role: role_docker, tags: "role_docker", when: phppgadmin_install_docker}
+   - {role: role_docker, tags: "role_docker", when: pgadmin_install_docker}
    - {role: role_init, tags: "role_init"}
    - {role: role_preend, tags: "role_preend"}
    - {role: role_end, tags: "role_end"} 
