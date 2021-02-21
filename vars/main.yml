@@ -12,11 +12,7 @@ init_docker:
   pgadmin:
     admin_username: user@domain.com
     admin_password: "SuperSecret"
-    db: postgresql
-    db_name: postgres
-    db_username: postgres
-    db_password: "123456"
     service_after: "docker.service"
-    compose_path: "/data/wwwroot/pgadmin/docker-compose.yml"
+    compose_path: "/data/apps/pgadmin/docker-compose.yml"
     compose_commands:
-      - sudo sed -i "s/SuperSecret/$new_password/g" /data/wwwroot/pgadmin/docker-compose.yml
+      - sudo sed -i "s/SuperSecret/$new_password/g" /data/apps/pgadmin/docker-compose.yml
