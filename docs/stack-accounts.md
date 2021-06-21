@@ -16,12 +16,6 @@ Here are the required username and password for RabbitMQ image installation and 
 * Administrator username: *`user@domain.com`*
 * Administrator password: stored in the file of your server instance: */credentials/password.txt*. 
 
-> You must change your pgAdmin password when login successfully
-
-## phpMyAdmin
-
-phpPgAdmin use the same account with PostgreSQL
-
 ## Linux
 
 * Host Name: Server's Internet IP or Public IP of your Instance
