@@ -9,10 +9,10 @@
   "requirements_disk": "20",
   "requirements_swap": "2",
   "requirements_configure_url": "https://www.postgresql.org/download/",
-  "components": "Docker, postgresql on Docker, pgadmin on Docker",
+  "components": "Docker, postgresql, pgadmin on Docker",
   "install_way": {
-    "en": "Docker install",
-    "zh": "Docker 安装"
+    "en": "Package install",
+    "zh": "包安装"
   },
-  "install_url": "https://github.com/Websoft9/ansible-postgresql/releases"
+  "install_url": "https://www.postgresql.org/docs/"
 }
