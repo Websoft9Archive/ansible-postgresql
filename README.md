@@ -23,7 +23,7 @@ To learn more information, please view [Installation & Configuration](https://ww
 
 ## Ecosystem
 
-Core components of this repository: Docker, postgresql on Docker, pgadmin on Docker
+Core components of this repository: Docker, postgresql, pgadmin on Docker
 
 Learn more about [Parameters](/docs/stack-components.md).
 
@@ -62,7 +62,7 @@ This program provided by Websoft9 contains a series of software with separate co
 
 #### How to install and view the latest release?
 
-This repository install way is Docker install, you can  view the version from [Official URL](https://github.com/Websoft9/ansible-postgresql/releases).  
+This repository install way is Package install, you can  view the version from [Official URL](https://www.postgresql.org/docs).  
 We will check [Release version](https://github.com/Websoft9/ansible-postgresql/releases) regularly. Update and test this project to ensure that users can successfully install the required version of PostgreSQL.
 
 #### Can I run this repository on Ansible Tower? 
