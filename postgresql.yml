@@ -17,7 +17,7 @@
       4: PostgreSQL 10\n
       5: PostgreSQL 11\n
       6: PostgreSQL 12\n
-      7: PostgreSQL 13\n"
+      7: PostgreSQL 13\n
       8: PostgreSQL 14\n"
       private: no
       default: 3
