@@ -18,6 +18,7 @@
       5: PostgreSQL 11\n
       6: PostgreSQL 12\n
       7: PostgreSQL 13\n"
+      8: PostgreSQL 14\n"
       private: no
       default: 3
 
@@ -44,6 +45,7 @@
       '5': '11'
       '6': '12'
       '7': '13'
+      '8': '14'
     postgresql_version: "{{postgresql_select[postgresql_selection]}}" 
 
     pgadmin_select:
